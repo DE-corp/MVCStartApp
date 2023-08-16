@@ -28,8 +28,8 @@ namespace MVCStartApp.Controllers
             var newUser = new User()
             {
                 Id = Guid.NewGuid(),
-                FirstName = "Oleg",
-                LastName = "Pavlov",
+                FirstName = "Name",
+                LastName = "Surname",
                 JoinDate = DateTime.Now
             };
 
@@ -40,12 +40,6 @@ namespace MVCStartApp.Controllers
             Console.WriteLine($"User with id {newUser.Id}, named {newUser.FirstName} was successfully added on {newUser.JoinDate}");
 
             return View();
-        }
-
-        public async Task<IActionResult> Authors()
-        {
-            var authors = await _repo.GetUsers();
-            return View(authors);
         }
 
         public IActionResult Privacy()
