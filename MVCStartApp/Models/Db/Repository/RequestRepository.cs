@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System;
+using System.Threading.Tasks;
 
 namespace MVCStartApp.Models.Db.Repository
 {
@@ -23,6 +23,12 @@ namespace MVCStartApp.Models.Db.Repository
 
             // Сохранение изенений
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<RequestItem[]> GetLogs()
+        {
+            // Получаем все логи
+            return await _context.requestPosts.ToArrayAsync();
         }
     }
 }
