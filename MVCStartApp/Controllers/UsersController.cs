@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MVCStartApp.Models.Db;
 using MVCStartApp.Models.Db.Repository;
 using System.Threading.Tasks;
 
@@ -21,6 +22,19 @@ namespace MVCStartApp.Controllers
         {
             var authors = await _repo.GetUsers();
             return View(authors);
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(User user)
+        {
+            await _repo.AddUser(user);
+            return View(user);
         }
     }
 }
